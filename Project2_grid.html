@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>이제 여행을 떠나볼까요?</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
+    <style>
+        * {
+      box-sizing: border-box;
+        }
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            background-color: #cfd6dd79;
+        }
+/* */
+        header {
+            background-color: #81D8CF;
+            height: 150px;
+            display: flex;      /* flex 레이아웃 : 여러 개의 엘리먼트(flex 요소)를 컨트롤 */
+            justify-content: center;        /* flex요소의 가로 정렬 */
+            align-items: center;            /* flex요소의 세로 정렬 */
+            color: #ffffff;
+        }
+
+        nav {
+            background-color: #fff;
+            display: flex;
+            justify-content: center;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        nav a {
+            text-decoration: none;
+            padding: 5px 10px;
+            margin-left: 2px;
+            display: block;
+            color: #2f89ff;
+        }
+
+        nav a:hover {
+            background-color: #2f89ff;
+            color: #fff;
+        }
+
+        main {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        section {
+          max-width: 1000px;
+          margin: 30px auto;
+          padding: 20px;
+          background-color: #fff;
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+          border-radius: 10px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+        }
+
+        img {
+          max-width: 100%;
+          height: auto;
+        }
+
+        button {
+          background-color: #81D8CF;
+          border: none;
+          color: white;
+          padding: 7px 15px;
+          text-align: center;
+          text-decoration: none;
+          display: inline-block;
+          font-size: 14px;
+          margin: 4px 2px;
+          cursor: pointer;
+          border-radius: 4px;
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>테마에 따른 도시여행 코스 추천 프로그램</h1>
+    </header>
+    <nav id="#top">
+        <a href="#theme1">Theme 1</a>
+        <a href="#theme2">Theme 2</a>
+        <a href="#theme3">Theme 3</a>
+    </nav>
+    <main>
+        <section id="theme1">
+            <h2>Theme 1. 역사와 전통문화</h2>
+            <img src="theme1.jpg" alt="Thumbnail Image For Theme1">
+            <p>역사의 숨결을 느끼고 아름다운 전통문화를 체험해볼까요?</p>
+            <form action="Project3_1.html">
+                <button type="submit">좋아요</button>
+            </form>
+        </section>
+        <section id="theme2">
+            <h2>Theme 2. 도심 속 자연</h2>
+            <img src="theme2.jpg" alt="Thumbnail Image For Theme2">
+            <p>달도 삼키고 바람도 보듬는 마음의 부자가 되어보면 어떨까요?</p>
+            <form action="Project3_2.html">
+                <button type="submit">좋아요</button>
+            </form>
+        </section>
+        <section id="theme3">
+            <h2>Theme 3. 문화와 예술</h2>
+            <img src="theme3.jpg" alt="Thumbnail Image For Theme3">
+            <p>문화만이 줄 수 있는 충만한 행복에 빠져볼까요?</p>
+            <form action="Project3_3.html">
+                <button type="submit">좋아요</button>
+            </form>
+        </section>
+    </main>
+    <footer>
+        <div style="text-align : center;"><a href="#top"><img src="button.png" width="50px" height="50px"></a>
+    </footer>
+</body>
+</html>

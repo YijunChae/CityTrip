@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>서비스 이용을 위해 로그인해주세요</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    /* box-sizing: border-box; 박스 내 요소의 너비와 높이를 균일하게 유지해줌 */
+
+    body {
+      font-family: 'Noto Sans KR', sans-serif;
+      background-color: #cfd6dd79;
+    }
+
+    h2 {
+      color: #81D8CF;
+    }
+
+    form {
+      background-color: white;
+      padding: 60px;
+      border-radius: 30px;
+      max-width: 600px;
+      margin: 150px  auto;   /* auto : 가로 중앙에 배치함 */ 
+      box-shadow: 10px 10px 10px 10px gray;
+    }
+
+    label {
+      display: block;   /* 전후 줄바꿈. 혼자 한 줄 차지 */
+      margin: 10px;
+    }
+
+    input[type="text"], input[type="password"] {
+      width: 100%;
+      padding: 10px 10px;
+      margin-bottom: 5px;  /* 바깥쪽 여백 */
+      border: 1px solid #81D8CF;
+      border-radius: 10px;
+    }
+
+    input[type="submit"] {
+      width: 100%;
+      padding: 15px;
+      font-weight: bold;
+      font-size: 25px;
+      background-color: #81D8CF;
+      color: white;
+      border: none;
+      cursor: pointer;
+      border-radius: 10px;
+      margin-top: 30px;
+      margin-bottom: 5px;
+    }
+
+    input[type="reset"] {
+      width: 100%;
+      padding: 15px;
+      font-weight: bold;
+      font-size: 25px;
+      background-color: #94989b;
+      color: white;
+      border: none;
+      cursor: pointer;
+      border-radius: 10px;
+      margin-bottom: 30px;
+    }
+
+  </style>
+</head>
+
+<body> 
+  <form action="./Project2_grid.html">
+    <h2>서비스를 이용하시려면 로그인해주세요</h2>
+    <label for="indentification">아이디</label>
+    <input type="text" id="indentification" name="indentification" placeholder="아이디를 입력해주세요" required>
+    <label for="password">패스워드</label>
+    <input type="password" id="password" name="password" placeholder="패스워드를 입력해주세요" required>
+    <input type="submit" value="로그인">
+    <input type="reset" value="다시 작성">
+  </form>
+</body>
+</html>

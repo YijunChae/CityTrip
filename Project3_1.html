@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>역사와 전통문화 체험</title>                                                                                     <!-- -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: 'Noto Sans KR', sans-serif;
+        }
+        body {
+            background-color: #e6eef0;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            font-size: 3rem;
+            text-align: center;
+            color: #0F4C81;
+            margin-top: 0;
+            margin-bottom: 1.5rem;
+        }
+        h2 {
+            font-size: 2rem;
+            color: #333;
+            margin: 1rem 0;
+        }
+        .survey_box {
+            font-size: 18px;
+            max-width: 1000px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background-color: #ffffff;
+            border-radius: 30px;
+            box-shadow: 0 2px 5px gray;     /* [x위치] [y위치] [번짐] [색] */
+        }
+        .survey_box h2{
+            color: #ffffff;
+            background-color: #0F4C81;
+            text-align: center;
+            padding: 1.5rem;
+            margin: 1rem;
+            margin-top: 5rem;
+            margin-bottom: 50px;
+        }
+        .survey_box p{
+            text-align: center;
+        }
+        form {
+            display: inline;
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+        }
+        input[type=radio] {
+            margin: 5px;
+        }
+        .survey_button {
+            text-align: center;
+        }
+        button {
+            display: inline-block;
+            width: 150px;
+            padding: 20px;
+            margin-top: 20px;
+            margin-bottom: 50px;
+            background-color: #94989b;
+            color: #ffffff;
+            font-size: 24px;
+            text-align: center;
+            border-radius: 5px;
+            border: none;
+            font-weight: bold;
+        }
+        button:hover {
+            background-color: #1762b3;
+            cursor: pointer;
+        }
+        .selected_section {
+            display: none;
+            margin-top: 20px;
+            text-align: center;
+        }
+        .selected_section h3 {
+            color: #333;
+            margin: 1rem 0;
+        }
+
+        .course_visit p {
+            color: #1762b3;
+            font-size: 1.5rem;
+            font-weight: bold;
+            line-height: 0.5;
+            margin-top: 20px;
+        }
+
+        .course_image {
+            width: 80%;
+            height: auto;
+            height: auto;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+        .course_link {
+            display: inline-block;
+            font-size: 24px;
+            color: orangered;
+            padding: 20px;
+            opacity: 80%;
+            text-decoration: none;
+        }
+
+        .course_link:hover {
+            text-decoration: underline;
+        }
+        /* */
+        .container {
+          display: flex;
+          justify-content: space-between;   /* 요소들 사이에 동일한 간격을 둠 */
+        }
+        .content {
+          flex-grow: 1;     /* 공간을 여백없이 채우기 */
+        }
+        .left {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;      /* 위에서부터 차곡차곡 */
+          margin-right: 20px;
+        }
+        .left .menu {
+          padding: 15px 0;
+        }
+        .left .menu a {
+          position: fixed;
+          display: flex;
+          flex-direction: column;
+          margin: 0 10px;
+          padding: 10px;
+          font-size: 2rem;
+          opacity: 80%;
+          color: #333;
+          text-decoration: none;
+        }
+        .sign {
+            text-align: right;
+            color: #333;
+            padding: 10px;
+        }
+    </style>
+    <script>
+        function submitSurvey() {
+            var preference = document.querySelector('input[name="preference"]:checked').value;
+            showResult(preference);
+        }
+    
+        function showResult(targetId) {
+            var sections = document.getElementsByClassName("result-section");
+            for (var i = 0; i < sections.length; i++) {
+                sections[i].style.display = "none";
+            }
+            document.getElementById(targetId).style.display = "block";
+        }
+    </script>    
+</head>
+<body>
+    <div class="container" id="top">
+        <div class="left">
+            <div class="menu">
+                <a href="Project3_1.html">↻ REFRESH</a>
+            </div>
+            <p/>
+            <div class="menu">
+                <a href="Project2_grid.html">＃CHANGE THEME</a>
+            </div>
+        </div>
+        <div class="content">
+            <div class="survey_box">
+                <h1>역사와 전통문화 체험</h1>
+                <img src="course1.jpg" alt="경복궁 이미지" width="100%" height="auto"></img>
+                <p>역사의 숨결을 느끼며 아름다운 전통문화를 체험해보세요</p>
+                <hr size="3" width="100%" noshade="noshade" color="#0F4C81"></hr>
+                <form id="survey_form">
+                    <h2>원하시는 코스를 선택해주세요</h2>
+                    <input type="radio" name="preference" value="Gyeongbokgung" required> 경복궁<br>
+                    <input type="radio" name="preference" value="Changdeokgung"> 창덕궁<br>
+                    <input type="radio" name="preference" value="Bukchon"> 북촌 한옥마을<br>
+                    <input type="radio" name="preference" value="Insadong"> 인사동<br>
+                    <hr size="3" width="100%" noshade="noshade" color="#0F4C81"></hr>
+                    <div class="survey_button">
+                        <button type="button" onclick="submitSurvey()">코스 생성</button>
+                    </div>
+                    <hr size="20" width="100%" noshade="noshade" color="#0F4C81"></hr>
+                </form>
+
+                <div id="Gyeongbokgung" class="selected_section">
+                    <h2>조선의 법궁, 경복궁</h2>
+                    <div class="course_visit">
+                        <p> &lt; 관람 시간 및 요금 안내 &gt; </p>
+                        <h4> 기관 사정에 따라 관람시간 단축 및 조정이 있을 수 있습니다. </h4>
+                        <a href="https://www.royalpalace.go.kr/content/guide/guide01_tab01.asp" target="_blank">
+                            <img src="Gyeongbokgung.jpg" alt="경복궁 이미지" class="course_image">
+                        </a>
+                        <p/>
+                        <p> &lt; 경복궁 관람코스 안내 &gt; </p>
+                        <a href="https://www.royalpalace.go.kr/content/preview/preview04_5a.asp" target="_blank">
+                            <img src="Gyeongbokgung2.png" alt="경복궁 관람 코스 이미지" class="course_image">
+                        </a>
+                        <p/>
+                        <p> &lt; 수문장 교대의식 &gt; </p>
+                        <a href="https://www.royalpalace.go.kr/content/preview/preview04_5a.asp" target="_blank">
+                            <img src="Gyeongbokgung5.jpg" alt="수문장 교대의식" class="course_image">
+                        </a>
+                        <p/>
+                            <a href="http://www.royalpalace.go.kr/" target="_blank" class="course_link">
+                                [더 알아보기]
+                            </a>
+                        <p/>
+                    </div>
+                    <p/>
+                    <h2>맛집 추천</h2>
+                    <div class="course_visit">
+                        <p> &lt; 1. 광화문 미진 &gt; </p>
+                        <h4> 1954년 개업 전통있는 메밀국수집 <h4>
+                        <a href="https://guide.michelin.com/kr/ko/seoul-capital-area/kr-seoul/restaurant/mijin" target="_blank">
+                            <img src="Gyeongbokgung3.jpg" alt="광화문미진" class="course_image">
+                        </a>
+                        <p/>
+                        <p> &lt; 2. 삼청동 수제비 &gt; </p>
+                        <h4> 잡내 없는 깔끔한 멸치 육수에 띄운 얇게 떼어낸 수제비와 감자전 <h4>
+                        <a href="https://guide.michelin.com/kr/ko/seoul-capital-area/kr-seoul/restaurant/samcheongdong-sujebi" target="_blank">
+                            <img src="Gyeongbokgung4.jpg" alt="삼청동수제비" class="course_image">
+                        </a>
+                        <p/>
+                    </div>
+                </div>
+<!--2. 창덕궁-->
+                <div id="Changdeokgung" class="selected_section">
+                    <h2>보는 즐거움</h2>
+                    <div class="course_visit">
+                        <h3>세계유산 창덕궁</h3>
+                        <p> &lt; 창덕궁 후원 관람코스 안내 &gt; </p>
+                        <h4>  </h4>
+                        <a href="http://www.cdg.go.kr/cms_for_cdg/show.jsp?show_no=50&check_no=14&c_relation=26&c_relation2=88" target="_blank">
+                            <img src="Changdeokgung2.jpg" alt="창덕궁 후원 관람 코스" class="course_image">
+                        </a>
+                        <p/>
+                        <p> &lt; 달빛기행 &gt; </p>
+                        <a href="http://www.cdg.go.kr/cms_for_cdg/show.jsp?show_no=22&check_no=3&c_relation=46&c_relation2=108" target="_blank">
+                            <img src="Changdeokgung_moonlight.jpg" alt="창덕궁 이미지" class="course_image">
+                        </a>
+                        <p/>
+                            <a href="http://www.cdg.go.kr/" target="_blank" class="course_link">
+                                [더 알아보기]
+                            </a>
+                        <p/>
+                    </div>
+                    <p/>
+                    <h2>커피 한 잔의 여유</h2>
+                    <div class="course_visit">
+                        <p> &lt; 1. 프릳츠 원서점 &gt; </p>
+                        <h4> 한옥에서 즐기는 특색있는 음료 <h4>
+                        <a href="https://www.instagram.com/fritzcoffeecompany/" target="_blank">
+                            <img src="Changdeokgung3.jpg" alt="프릳츠" class="course_image">
+                        </a>
+                        <p/>
+                        <p> &lt; 2. 청수당 &gt; </p>
+                        <h4> 도심 속 정원에서 휴식과 디저틀를 즐기는  오더 메이드 수플레 전문점 <h4>
+                        <a href="http://glowseoul.co.kr/" target="_blank">
+                            <img src="Changdeokgung4.jpg" alt="청수당" class="course_image">
+                        </a>
+                        <p/>
+                    </div>
+                </div>
+<!--3. 북촌 한옥마을-->
+                <div id="Bukchon" class="selected_section">
+                    <h2>보는 즐거움</h2>
+                    <div class="course_visit">
+                        <h3>종로의 북쪽마을, 도심을 흐르는 청계천과 600년 선조의 숨결이 살아숨쉬는 곳</h3>
+                        <p> &lt; 한옥 지식 채우기 &gt; </p>
+                        <a href="https://hanok.seoul.go.kr/front/kor/info/infoHanok.do?tab=1" target="_blank">
+                            <img src="Bukchon1.jpg" alt="북촌1" class="course_image">
+                        </a>
+                        <p/>
+                        <p> &lt; 한옥체험 Tip &gt; </p>
+                        <a href="https://hanok.seoul.go.kr/front/kor/exp/expTip.do" target="_blank">
+                            <img src="Bukchon2.JPG" alt="북촌2" class="course_image">
+                        </a>
+                        <p/>
+                            <a href="https://hanok.seoul.go.kr/" target="_blank" class="course_link">
+                                [더 알아보기]
+                            </a>
+                        <p/>
+                    </div>
+                    <p/>
+                    <h2>먹는 즐거움</h2>
+                    <div class="course_visit">
+                        <p> &lt; 1. 이태리재 &gt; </p>
+                        <h4> 뇨끼 어란파스타가 너무 맛있는 이탈리안 레스토랑 <h4>
+                        <a href="https://www.instagram.com/italyjae" target="_blank">
+                            <img src="Bukchon3.jpg" alt="이태리재" class="course_image">
+                        </a>
+                        <p/>
+                        <p> &lt; 2. 삼청빙수 &gt; </p>
+                        <h4> 한옥에서 먹는 빙수 <h4>
+                        <a href="http://www.instagram.com/bukchon_bingsu" target="_blank">
+                            <img src="Bukchon4.jpg" alt="삼청빙수" class="course_image">
+                        </a>
+                        <p/>
+                    </div>
+                </div>
+<!--4. 인사동-->
+                <div id="Insadong" class="selected_section">
+                    <h2>인사동</h2>
+                    <div class="course_visit">
+                        <p> &lt; 미로처럼 얽힌 골목 속 온고지신 &gt; </p>
+                        <a href="https://hanok.seoul.go.kr/front/kor/town/town03.do" target="_blank">
+                            <img src="Insadong1.jpg" alt="인사동1" class="course_image">
+                        </a>
+                        <p/>
+                        <p> &lt; 도심 속, 낡지만 귀중한 전통의 물건들이 교류되는 소중한 공간 &gt; </p>
+                        <a href="https://korean.visitkorea.or.kr/detail/ms_detail.do?cotid=05e4012d-6c3c-4b76-b801-41c23846df12&big_category=A02&mid_category=A0203&big_area=1" target="_blank">
+                            <img src="Insadong2.jpg" alt="인사동2" class="course_image">
+                        </a>
+                        <p/>
+                    </div>
+                    <p/>
+                    <h2>먹는 즐거움</h2>
+                    <div class="course_visit">
+                        <p> &lt; 1. 개성만두 궁 &gt; </p>
+                        <h4> 배추와 숙주나물을 넉넉히 넣어 담백하고 삼삼한 맛이 일품인 개성만두 <h4>
+                        <a href="https://guide.michelin.com/kr/ko/seoul-capital-area/kr-seoul/restaurant/gaeseong-mandu-koong" target="_blank">
+                            <img src="Insadong3.jpg" alt="개성만두궁" class="course_image">
+                        </a>
+                        <p/>
+                        <p> &lt; 2. 꽃, 밥에피다 &gt; </p>
+                        <h4> 지단을 걷으면 한 송이 꽃이 피어 있는 듯한 보자기비빔밥 </h4>
+                        <a href="https://www.goodbab.co.kr/home" target="_blank">
+                            <img src="Insadong4.jpg" alt="꽃밥에피다" class="course_image">
+                        </a>
+                        <p/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <div style="text-align : center;"><a href="#top"><img src="button.png" width="100px" height="100px"></a>
+    </footer>
+</body>
+<footer class="sign">
+    <h3> [AISW 23] YIJUN CHAE </h3>
+</footer>
+</html>

@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>문화와 예술</title>                                                                                     <!-- -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: 'Noto Sans KR', sans-serif;
+        }
+        body {
+            background-color: #e6eef0;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            font-size: 3rem;
+            text-align: center;
+            color: #0F4C81;
+            margin-top: 0;
+            margin-bottom: 1.5rem;
+        }
+        h2 {
+            font-size: 2rem;
+            color: #333;
+            margin: 1rem 0;
+        }
+        .survey_box {
+            font-size: 18px;
+            max-width: 1000px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background-color: #ffffff;
+            border-radius: 30px;
+            box-shadow: 0 2px 5px gray;     /* [x위치] [y위치] [번짐] [색] */
+        }
+        .survey_box h2{
+            color: #ffffff;
+            background-color: #0F4C81;
+            text-align: center;
+            padding: 1.5rem;
+            margin: 1rem;
+            margin-top: 5rem;
+            margin-bottom: 25px;
+        }
+        .survey_box p{
+            text-align: center;
+        }
+        form {
+            display: inline;
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+        }
+        input[type=radio] {
+            margin: 5px;
+        }
+        .survey_button {
+            text-align: center;
+        }
+        button {
+            display: inline-block;
+            width: 150px;
+            padding: 20px;
+            margin-top: 20px;
+            margin-bottom: 50px;
+            background-color: #94989b;
+            color: #ffffff;
+            font-size: 24px;
+            text-align: center;
+            border-radius: 5px;
+            border: none;
+            font-weight: bold;
+        }
+        button:hover {
+            background-color: #1762b3;
+            cursor: pointer;
+        }
+        .selected_section {
+            display: none;
+            margin-top: 20px;
+            text-align: center;
+        }
+        .selected_section h3 {
+            color: #333;
+            margin: 1rem 0;
+        }
+        .course_visit p {
+            color: #001b94;
+            font-size: 2rem;
+            font-weight: bold;
+            line-height: 0.5;
+            margin-top: 75px;
+        }
+
+        .course_image {
+            width: 100%;
+            height: auto;
+            height: auto;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+        .course_link {
+            display: inline-block;
+            font-size: 24px;
+            color: orangered;
+            padding: 20px;
+            opacity: 80%;
+            text-decoration: none;
+        }
+
+        .course_link:hover {
+            text-decoration: underline;
+        }
+        /* */
+        .container {
+          display: flex;
+          justify-content: space-between;   /* 요소들 사이에 동일한 간격을 둠 */
+        }
+        .content {
+          flex-grow: 1;     /* 공간을 여백없이 채우기 */
+        }
+        .left {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;      /* 위에서부터 차곡차곡 */
+          margin-right: 20px;
+        }
+        .left .menu {
+          padding: 15px 0;
+        }
+        .left .menu a {
+          position: fixed;
+          display: flex;
+          flex-direction: column;
+          margin: 0 10px;
+          padding: 10px;
+          font-size: 2rem;
+          opacity: 80%;
+          color: #333;
+          text-decoration: none;
+        }
+        .sign {
+            text-align: right;
+            color: #333;
+            padding: 10px;
+        }
+    </style>
+    <script>
+        function submitSurvey() {
+            var preference = document.querySelector('input[name="preference"]:checked').value;
+            showResult(preference);
+        }
+    
+        function showResult(targetId) {
+            var sections = document.getElementsByClassName("result-section");
+            for (var i = 0; i < sections.length; i++) {
+                sections[i].style.display = "none";
+            }
+            document.getElementById(targetId).style.display = "block";
+        }
+    </script>    
+</head>
+<body>
+    <div class="container" id="top">
+        <div class="left">
+            <div class="menu">
+                <a href="Project3_3.html">↻ REFRESH</a>
+            </div>
+            <p/>
+            <div class="menu">
+                <a href="Project2_grid.html">＃CHANGE THEME</a>
+            </div>
+        </div>
+        <div class="content">
+            <div class="survey_box">
+                <h1>문화와 예술</h1>
+                <img src="course3.jpg" alt="course3" width="100%" height="auto"></img>
+                <p>"문화는 우리가 살기 위해 배우는 방법이고, 다른 사람들과 관계를 맺는 방법이며, 세상을 보는 방법이다."</p>
+                <p> - John Paul Lederach </p>
+                <hr size="3" width="100%" noshade="noshade" color="#0F4C81"></hr>
+                <form id="survey_form">
+                    <h2>원하시는 코스를 선택해주세요</h2>
+                    <input type="radio" name="preference" value="Blue-Square" required> 블루스퀘어 <br>
+                    <input type="radio" name="preference" value="Leeum"> 리움미술관 <br>
+                    <input type="radio" name="preference" value="Itaewon"> 이태원 <br>
+                    <hr size="3" width="100%" noshade="noshade" color="#0F4C81"></hr>
+                    <div class="survey_button">
+                        <button type="button" onclick="submitSurvey()">코스 생성</button>
+                    </div>
+                    <hr size="20" width="100%" noshade="noshade" color="#0F4C81"></hr>
+                </form>
+<!--1. 블루스퀘어-->
+                <div id="Blue-Square" class="selected_section">
+                    <h2> Blue Square </h2>
+                    <div class="course_visit">
+                        <p> &lt; 예술, 공연, 전시 등 다양한 볼거리가 있는 복합문화공간 &gt; </p>
+                        <h4> Blue Square </h4>
+                        <a href="http://www.bluesquare.kr/Info/Bluesquare_Info.asp?m_menu=bluesquare&s_menu=info" target="_blank">
+                            <img src="3_1_bs1.jpg" alt="블루스퀘어1" class="course_image">
+                        </a>
+                        <p/>
+                        <p> &lt; 신한카드홀 안내 &gt; </p>
+                        <h4> 뮤지컬 전용 대극장으로 총 객석 3층, 1766석 규모 </h4>
+                        <a href="http://www.bluesquare.kr/Rent/Facilities.asp?m_menu=rent&s_menu=fac" target="_blank">
+                            <img src="3_1_bs2.jpg" alt="블루스퀘어2" class="course_image">
+                        </a>
+                        <p/>
+                        <p> &lt; 마스터카드홀 안내 &gt; </p>
+                        <h4> 진정한 라이브를 만들고 즐길 수 있도록 태어난 콘서트 공연장 </h4>
+                        <a href="http://www.bluesquare.kr/Rent/Facilities.asp?m_menu=rent&s_menu=fac" target="_blank">
+                            <img src="3_1_bs3.jpg" alt="블루스퀘어3" class="course_image">
+                        </a>
+                        <p/>
+                        <p> &lt; 뮤지컬 '시카고' &gt; </p>
+                        <h4> 25주년 기념 오리지널 내한공연 </h4>
+                        <a href="https://tickets.interpark.com/goods/23004325" target="_blank">
+                            <img src="3_1_bs4.jpg" alt="블루스퀘어4" class="course_image">
+                        </a>
+                        <p/>
+                            <a href="http://www.bluesquare.kr/" target="_blank" class="course_link">
+                                ['블루스퀘어'에 대해 더 알고 싶다면 ☞]
+                            </a>
+                        <p/>
+                    </div>
+                    <p/>
+                    <h2>맛집 추천</h2>
+                    <div class="course_visit">
+                        <p> &lt; 1. 난포 한남 &gt; </p>
+                        <h4> 그 옛날 손녀만을 위해 만들어주시던 할머니의 음식들을 소개합니다 <h4>
+                        <a href="https://www.instagram.com/nanpo_official" target="_blank">
+                            <img src="3_1_bs_f1.jpg" alt="난포" class="course_image">
+                        </a>
+                        <p/>
+                        <p> &lt; 2. 리틀넥 한남 &gt; </p>
+                        <h4> '서울 속 작은 뉴욕' <h4>
+                        <h4> 편안하게 즐길 수 있는 브런치메뉴와 건강한 슈퍼푸드 </h4>
+                        <a href="https://bit.ly/littleneck_gffg" target="_blank">
+                            <img src="3_1_bs_f2.jpg" alt="리틀넥" class="course_image">
+                        </a>
+                        <p/>
+                        <p> &lt; 3. 한남작업실 &gt; </p>
+                        <h4> 싱그러운 자연미가 느껴지는 공간에서 즐기는 특별한 음료 <h4>
+                        <a href="https://www.instagram.com/hannam_atelier/" target="_blank">
+                            <img src="3_1_bs_f3.jpg" alt="한남작업실" class="course_image">
+                        </a>
+                        <p/>
+                    </div>
+                </div>
+<!--2. 리움미술관-->
+                <div id="Leeum" class="selected_section">
+                    <h2>리움미술관</h2>
+                    <div class="course_visit">
+                        <h3> 한국 고유의 미를 담고 있는 전통미술 </h3>
+                        <h3> 생동하는 현대미술 </h3>
+                        <h3> 시대적 가치를 반영한 국제미술 </h3>
+                        <h3> 이 모두가 공존하는 공간 </h3>
+                        <img src="3_2_leeum0.jpg" alt="리움0" class="course_image">
+                        <p> &lt; 공간과 건축 &gt; </p>
+                        <a href="https://www.leeum.org/space/space01.asp" target="_blank">
+                            <img src="3_2_leeum1.jpg" alt="리움1" class="course_image">
+                        </a>
+                        <p/>
+                        <p> &lt; 전시 안내 1. M1 고미술 &gt; </p>
+                        <h4> 2021. 10. 08 ~ </h4>
+                        <a href="https://www.leeum.org/exhibition/exhibitionOld.asp" target="_blank">
+                            <img src="3_2_leeum2.jpg" alt="리움2" class="course_image">
+                        </a>
+                        <p/>
+                        <p> &lt; 전시 안내 2. 영원한 움직임, '이상한 행렬' &gt; </p>
+                        <h4> 다양한 현대 기술을 매개로 한 예술의 가능성 </h4>
+                        <a href="https://www.leeum.org/exhibition/exhibition01_detail.asp?seq=58" target="_blank">
+                            <img src="3_2_leeum3.jpg" alt="리움3" class="course_image">
+                        </a>
+                        <p/>
+                        <p> &lt; 전시 안내 3. 장영규: 추종자 &gt; </p>
+                        <h4> 판소리 전수 과정을 담은 아카이브 음원 작업 </h4>
+                        <a href="https://www.leeum.org/exhibition/exhibition01_detail.asp?seq=50" target="_blank">
+                            <img src="3_2_leeum4.jpg" alt="리움4" class="course_image">
+                        </a>
+                        <p/>
+                        <p> &lt; [마우리치오 카텔란] 예술적 경험을 확장하는 대학생 교육 프로그램 &gt;  </p>
+                        <h4> 마우리치오 카텔란 전시장을 대학들의 배움과 토론의 공간으로 제공하는 교육 프로그램 </h4>
+                        <a href="https://www.leeum.org/program/lecture_view.asp" target="_blank">
+                            <img src="3_2_leeum5.jpg" alt="리움5" class="course_image">
+                        </a>
+                        <p/>
+                            <a href="https://www.leeum.org/" target="_blank" class="course_link">
+                                ['리움미술관'에 대해 더 알고 싶다면 ☞]
+                            </a>
+                        <p/>
+                    </div>
+                    <p/>
+                    <h2>맛집 추천</h2>
+                    <div class="course_visit">
+                        <p> &lt; 1. 솥솥 &gt; </p>
+                        <h4> 신선한 재료, 따뜻한 솥밥 <h4>
+                        <a href="https://www.instagram.com/solsot_hannam" target="_blank">
+                            <img src="3_2_leeum_f1.jpg" alt="솥밥" class="course_image">
+                        </a>
+                        <p/>
+                        <p> &lt; 2. Summer Lane &gt; </p>
+                        <h4> 호주식 프런치와 디저트를 제공하는 올데이 브런치카페 <h4>
+                        <a href="http://instagram.com/summerlane_brunch" target="_blank">
+                            <img src="3_2_leeum_f2.jpg" alt="썸머레인" class="course_image">
+                        </a>
+                        <p/>
+                        <p> &lt; 3. 엔다이브 &gt; </p>
+                        <h4> 따뜻하고 아늑한 분위기 속에서 즐기는 제철에 잘 선별한 좋은 재료로 만들어 내는 디저트와 음료 <h4>
+                        <a href="http://www.instagram.com/endive.hannam" target="_blank">
+                            <img src="3_2_leeum_f3.jpg" alt="엔다이브" class="course_image">
+                        </a>
+                        <p/>
+                    </div>
+                </div>
+<!--3. 이태원-->
+                <div id="Itaewon" class="selected_section">
+                    <h2>이태원</h2>
+                    <div class="course_visit">
+                        <h3> 외국문화의 집결지, 이태원 </h3>
+                        <img src="3_3_itw0.jpg" alt="이태원0" class="course_image">
+                        <p> &lt; 경리단길 &gt; </p>
+                        <h4> 저마다 개성이 넘치는 식당과 카페, 다양하고 독특한 먹거리가 유명한 문화와 젊음의 공간 </h4>
+                        <a href="https://lucki.kr/302" target="_blank">
+                            <img src="3_3_itw1.jpg" alt="이태원1" class="course_image">
+                        </a>
+                        <p/>
+                        <p> &lt; 부기우기 &gt; </p>
+                        <h4> 매일 매일 라이브공연이 이루어지는 재즈바 </h4>
+                        <a href="https://bit.ly/booking_bgwg" target="_blank">
+                            <img src="3_3_itw2.jpg" alt="이태원2" class="course_image">
+                        </a>
+                        <p/>
+                        <p> &lt; 스토리지북앤필름 &gt; </p>
+                        <h4> 독립출판과 소규모출판물을 다루는 해방촌에 위치한 책방 </h4>
+                        <a href="http://www.storagebookandfilm.com" target="_blank">
+                            <img src="3_3_itw3.jpg" alt="이태원3" class="course_image">
+                        </a>
+                        <p/>
+                        <p> &lt; 사운즈한남 &gt; </p>
+                        <h4> 다채로운 볼거리를 제공하는 도심 속 복합문화공간 </h4>
+                        <a href="http://www.instagram.com/sounds.hannam" target="_blank">
+                            <img src="3_3_itw4.jpg" alt="이태원4" class="course_image">
+                        </a>
+                        <p/>
+                    </div>
+                    <p/>
+                    <h2>맛집 추천</h2>
+                    <div class="course_visit">
+                        <p> &lt; 1. 더 베이커스 테이블 &gt; </p>
+                        <h4> 독일식 빵이 맛있는 카페 <h4>
+                        <a href="http://www.thebakerstable.co.kr" target="_blank">
+                            <img src="3_3_itw_f1.jpg" alt="더베이커스테이블" class="course_image">
+                        </a>
+                        <p/>
+                        <p> &lt; 2. 케르반 레스토랑 &gt; </p>
+                        <h4> 양고기와 양갈비가 특화된 터키음식점 <h4>
+                        <a href="https://www.instagram.com/kervan_turkishrestaurant/" target="_blank">
+                            <img src="3_3_itw_f2.jpg" alt="케르반" class="course_image">
+                        </a>
+                        <p/>
+                        <p> &lt; 3. 한남동자리 &gt; </p>
+                        <h4> 목화솜 탕수육이 인상적인 중식당 <h4>
+                        <a href="http://www.instagram.com/jari_hannam" target="_blank">
+                            <img src="3_3_itw_f3.jpg" alt="한남동자리" class="course_image">
+                        </a>
+                        <p/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <div style="text-align : center;"><a href="#top"><img src="button.png" width="100px" height="100px"></a>
+    </footer>
+</body>
+<footer class="sign">
+    <h3> [AISW 23] YIJUN CHAE </h3>
+</footer>
+</html>

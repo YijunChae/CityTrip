@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>도심 속 자연</title>                                                                                     <!-- -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: 'Noto Sans KR', sans-serif;
+        }
+        body {
+            background-color: #e6eef0;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            font-size: 3rem;
+            text-align: center;
+            color: #0F4C81;
+            margin-top: 0;
+            margin-bottom: 1.5rem;
+        }
+        h2 {
+            font-size: 2rem;
+            color: #333;
+            margin: 1rem 0;
+        }
+        .survey_box {
+            font-size: 18px;
+            max-width: 1000px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background-color: #ffffff;
+            border-radius: 30px;
+            box-shadow: 0 2px 5px gray;     /* [x위치] [y위치] [번짐] [색] */
+        }
+        .survey_box h2{
+            color: #ffffff;
+            background-color: #0F4C81;
+            text-align: center;
+            padding: 1.5rem;
+            margin: 1rem;
+            margin-top: 5rem;
+            margin-bottom: 25px;
+        }
+        .survey_box p{
+            text-align: center;
+        }
+        form {
+            display: inline;
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+        }
+        input[type=radio] {
+            margin: 5px;
+        }
+        .survey_button {
+            text-align: center;
+        }
+        button {
+            display: inline-block;
+            width: 150px;
+            padding: 20px;
+            margin-top: 20px;
+            margin-bottom: 50px;
+            background-color: #94989b;
+            color: #ffffff;
+            font-size: 24px;
+            text-align: center;
+            border-radius: 5px;
+            border: none;
+            font-weight: bold;
+        }
+        button:hover {
+            background-color: #1762b3;
+            cursor: pointer;
+        }
+        .selected_section {
+            display: none;
+            margin-top: 20px;
+            text-align: center;
+        }
+        .selected_section h3 {
+            color: #333;
+            margin: 1rem 0;
+        }
+        .course_visit p {
+            color: #001b94;
+            font-size: 2rem;
+            font-weight: bold;
+            line-height: 0.5;
+            margin-top: 75px;
+        }
+
+        .course_image {
+            width: 100%;
+            height: auto;
+            height: auto;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+        .course_link {
+            display: inline-block;
+            font-size: 24px;
+            color: orangered;
+            padding: 20px;
+            opacity: 80%;
+            text-decoration: none;
+        }
+
+        .course_link:hover {
+            text-decoration: underline;
+        }
+        /* */
+        .container {
+          display: flex;
+          justify-content: space-between;   /* 요소들 사이에 동일한 간격을 둠 */
+        }
+        .content {
+          flex-grow: 1;     /* 공간을 여백없이 채우기 */
+        }
+        .left {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;      /* 위에서부터 차곡차곡 */
+          margin-right: 20px;
+        }
+        .left .menu {
+          padding: 15px 0;
+        }
+        .left .menu a {
+          position: fixed;
+          display: flex;
+          flex-direction: column;
+          margin: 0 10px;
+          padding: 10px;
+          font-size: 2rem;
+          opacity: 80%;
+          color: #333;
+          text-decoration: none;
+        }
+        .sign {
+            text-align: right;
+            color: #333;
+            padding: 10px;
+        }
+    </style>
+    <script>
+        function submitSurvey() {
+            var preference = document.querySelector('input[name="preference"]:checked').value;
+            showResult(preference);
+        }
+    
+        function showResult(targetId) {
+            var sections = document.getElementsByClassName("result-section");
+            for (var i = 0; i < sections.length; i++) {
+                sections[i].style.display = "none";
+            }
+            document.getElementById(targetId).style.display = "block";
+        }
+    </script>    
+</head>
+<body>
+    <div class="container" id="top">
+        <div class="left">
+            <div class="menu">
+                <a href="Project3_2.html">↻ REFRESH</a>
+            </div>
+            <p/>
+            <div class="menu">
+                <a href="Project2_grid.html">＃CHANGE THEME</a>
+            </div>
+        </div>
+        <div class="content">
+            <div class="survey_box">
+                <h1>도심 속 자연</h1>
+                <img src="course2.jpg" alt="course2" width="100%" height="auto"></img>
+                <p>도심과 자연이 어우러진 명소들을 방문해보세요</p>
+                <hr size="3" width="100%" noshade="noshade" color="#0F4C81"></hr>
+                <form id="survey_form">
+                    <h2>원하시는 코스를 선택해주세요</h2>
+                    <input type="radio" name="preference" value="Nam-san" required> 남산<br>
+                    <input type="radio" name="preference" value="Banpo-Hangang"> 반포 한강공원<br>
+                    <input type="radio" name="preference" value="Yeouido-Hangang"> 여의도 한강공원<br>
+                    <input type="radio" name="preference" value="Maeheon-forest"> 매헌시민의 숲<br>
+                    <hr size="3" width="100%" noshade="noshade" color="#0F4C81"></hr>
+                    <div class="survey_button">
+                        <button type="button" onclick="submitSurvey()">코스 생성</button>
+                    </div>
+                    <hr size="20" width="100%" noshade="noshade" color="#0F4C81"></hr>
+                </form>
+<!--1. 남산-->
+                <div id="Nam-san" class="selected_section">
+                    <h2>서울의 중심 '남산'</h2>
+                    <h4>맑은 공기 속에서 편안한 시간을 보내보세요</h4>
+                    <div class="course_visit">
+                        <p> &lt; 패밀리코스 &gt; </p>
+                        <h4> Famliy Course </h4>
+                        <a href="https://www.seoultower.co.kr/tour/course#family" target="_blank">
+                            <img src="2_1_Namsan1.JPG" alt="2_1_Namsan1" class="course_image">
+                        </a>
+                        <p/>
+                        <p> &lt; 커플 코스 &gt; </p>
+                        <h4> Romantic Course </h4>
+                        <a href="https://www.seoultower.co.kr/tour/course#couple" target="_blank">
+                            <img src="2_1_Namsan2.JPG" alt="2_1_Namsan2" class="course_image">
+                        </a>
+                        <p/>
+                        <p> &lt; 힐링 코스 &gt; </p>
+                        <h4> Healing Course </h4>
+                        <a href="https://www.seoultower.co.kr/tour/course#healing" target="_blank">
+                            <img src="2_1_Namsan3.JPG" alt="2_1_Namsan3" class="course_image">
+                        </a>
+                        <p/>
+                        <p> &lt; 스포츠레저 코스 &gt; </p>
+                        <h4> Sports/Leisure Course </h4>
+                        <a href="https://www.seoultower.co.kr/tour/course#sport" target="_blank">
+                            <img src="2_1_Namsan4.JPG" alt="2_1_Namsan4" class="course_image">
+                        </a>
+                        <p/>
+                            <a href="https://www.seoultower.co.kr/" target="_blank" class="course_link">
+                                ['남산'에 대해 더 알고 싶다면 ☞]
+                            </a>
+                        <p/>
+                    </div>
+                    <p/>
+                    <h2>맛집 추천</h2>
+                    <div class="course_visit">
+                        <p> &lt; 1. 명동교자 &gt; </p>
+                        <h4> 구수하면서도 진한 국물과 부드러운 면발의 조화가 환상적인 칼국수 <h4>
+                        <a href="http://www.mdkj.co.kr/" target="_blank">
+                            <img src="2_1_Namsan_f1.JPG" alt="명동교자" class="course_image">
+                        </a>
+                        <p/>
+                        <p> &lt; 2. 롯데호텔서울 무궁화 &gt; </p>
+                        <h4> 롯데호텔서울에 위치한 한정식 레스토랑<h4>
+                        <h4> 동양의 멋과 현대적 감성이 공존하는 공간으로 모던한 한식을 만나보세요 </h4>
+                        <a href="https://www.lottehotel.com/seoul-hotel/ko/dining/restaurant-mugunghwa.html" target="_blank">
+                            <img src="2_1_Namsan_f2.JPG" alt="무궁화" class="course_image">
+                        </a>
+                        <p/>
+                    </div>
+                </div>
+<!--2. 반포 한강공원-->
+                <div id="Banpo-Hangang" class="selected_section">
+                    <h2>반포 한강공원</h2>
+                    <div class="course_visit">
+                        <h3>자연·문화·힐링이 어우러지는 한강 명소</h3>
+                        <img src="2_2_Hangang0.jpg" alt="한강0" class="course_image">
+                        <p> &lt; 한 눈에 보는 반포 한강공원 &gt; </p>
+                        <a href="https://hangang.seoul.go.kr/www/park/list.do?mid=426" target="_blank">
+                            <img src="2_2_Hangang1.jpg" alt="한강1" class="course_image">
+                        </a>
+                        <p/>
+                        <p> &lt; 차 없는 잠수교 뚜벅뚜벅 축제 &gt; </p>
+                        <h4> 놀며, 쉬며, 걸으며 멋진 한강 노을까지 감상하세요 </h4>
+                        <a href="https://hangang.seoul.go.kr/www/eventMng/detail.do?&evntSn=71&mid=538" target="_blank">
+                            <img src="2_2_Hangang2.jpg" alt="한강2" class="course_image">
+                        </a>
+                        <p/>
+                        <p> &lt; 서래섬 &gt; </p>
+                        <h4> 해질녘의 노을과 야경이 아름다운 바둑돌 모양의 인공섬 </h4>
+                        <a href="https://korean.visitseoul.net/nature/%EC%84%9C%EB%9E%98%EC%84%AC_/27688" target="_blank">
+                            <img src="2_2_Hangang3.jpg" alt="한강3" class="course_image">
+                        </a>
+                        <p/>
+                        <p> &lt; 세빛섬 &gt; </p>
+                        <h4> '한강과 서울을 빛내라' 아름다운 조명이 반짝이는 3개의 섬 </h4>
+                        <a href="https://www.somesevit.co.kr/" target="_blank">
+                            <img src="2_2_Hangang4.jpg" alt="한강4" class="course_image">
+                        </a>
+                        <p/>
+                        <p> &lt; 달빛무지개분수 &gt;  </p>
+                        <h4> 무지개빛 조명과 음악에 맞추어 춤추는 아름다운 분수 </h4>
+                        <a href="https://hangang.seoul.go.kr/www/contents/856.do?mid=849" target="_blank">
+                            <img src="2_2_Hangang5.jpg" alt="한강5" class="course_image">
+                        </a>
+                        <p/>
+                            <a href="https://hangang.seoul.go.kr/www/contents/775.do?mid=510" target="_blank" class="course_link">
+                                ['반포 한강공원'에 대해 더 알고 싶다면 ☞]
+                            </a>
+                        <p/>
+                    </div>
+                    <p/>
+                    <h2>맛집 추천</h2>
+                    <div class="course_visit">
+                        <p> &lt; 1. JULY &gt; </p>
+                        <h4> 정통 프렌치 요리에 기반을 두고 있지만, 국내 식재료를 최대한 활용해 셰프의 개성대로 전통을 재해석한 프렌치 레스토랑 <h4>
+                        <a href="https://app.catchtable.co.kr/ct/shop/july" target="_blank">
+                            <img src="2_2_Hangang_f1.jpg" alt="줄라이" class="course_image">
+                        </a>
+                        <p/>
+                        <p> &lt; 2. 텍사스데브라질 &gt; </p>
+                        <h4> 15가지의 브라질 정통 스테이크인 슈하스코와 50여가지의 신선한 계절 샐러드 <h4>
+                        <a href="http://www.sunatfood.com/" target="_blank">
+                            <img src="2_2_Hangang_f2.jpg" alt="텍사스데브라질" class="course_image">
+                        </a>
+                        <p/>
+                        <p> &lt; 3. 카페드리옹 &gt; </p>
+                        <h4> 정성스럽게 준비한 고급스러운 맛의 케이크와 디저트 <h4>
+                        <a href="WWW.CAFEDELYON.KR" target="_blank">
+                            <img src="2_2_Hangang_f3.jpg" alt="카페드리옹" class="course_image">
+                        </a>
+                        <p/>
+                    </div>
+                </div>
+<!--3. 여의도 한강공원-->
+                <div id="Yeouido-Hangang" class="selected_section">
+                    <h2>여의도 한강공원</h2>
+                    <div class="course_visit">
+                        <h3> 높은 빌딩들이 가득한 여의도 도심 속 오아시스 </h3>
+                        <img src="2_3_YH0.JPG" alt="여의도0" class="course_image">
+                        <p> &lt; 한 눈에 보는 여의도 한강공원 &gt; </p>
+                        <a href="https://hangang.seoul.go.kr/www/contents/669.do?mid=473" target="_blank">
+                            <img src="2_3_YH1.JPG" alt="여의도1" class="course_image">
+                        </a>
+                        <p/>
+                        <p> &lt; 잠 못 이루는 여름밤, 한강에서 즐기는 피크닉 &gt; </p>
+                        <h4> 돗자리 하나 펴고 앉아 즐기는 치맥으로 힐링하세요 </h4>
+                        <a href="https://hangang.seoul.go.kr/www/contents/669.do?mid=473" target="_blank">
+                            <img src="2_3_YH2.JPG" alt="여의도2" class="course_image">
+                        </a>
+                        <p/>
+                        <p> &lt; 강캉스의 중심 '물빛광장' &gt; </p>
+                        <h4> 높은 건물과 초록색 자연, 한강이 어우러진 힐링 명소 </h4>
+                        <a href="https://hangang.seoul.go.kr/www/contents/669.do?mid=473" target="_blank">
+                            <img src="2_3_YH3.JPG" alt="여의도3" class="course_image">
+                        </a>
+                        <p/>
+                        <p> &lt; 서울밤도깨비야시장 &gt; </p>
+                        <h4> 달빛을 배경으로 펼쳐지는 한 밤의 예술시장 </h4>
+                        <a href="https://hangangmoonlightmarket.org/" target="_blank">
+                            <img src="2_3_YH4.JPG" alt="여의도4" class="course_image">
+                        </a>
+                        <p/>
+                            <a href="https://hangang.seoul.go.kr/www/contents/669.do?mid=473" target="_blank" class="course_link">
+                                ['여의도 한강공원'에 대해 더 알고 싶다면 ☞]
+                            </a>
+                        <p/>
+                    </div>
+                    <p/>
+                    <h2>맛집 추천</h2>
+                    <div class="course_visit">
+                        <p> &lt; 1. 세상의모든아침 &gt; </p>
+                        <h4> 재료의 신선함을 담은 All Day Brunch Dining <h4>
+                        <a href="https://www.chorokbaemfoodfarm.com/" target="_blank">
+                            <img src="2_3_YH_f1.JPG" alt="세상의모든아침" class="course_image">
+                        </a>
+                        <p/>
+                        <p> &lt; 2. 전설의우대갈비 &gt; </p>
+                        <h4> 특제양념이 가미된 최고급 꽃갈비살 <h4>
+                        <a href="http://xn--w39a45ki5jb0c4wj12am8a.com/" target="_blank">
+                            <img src="2_3_YH_f2.JPG" alt="전설의우대갈비" class="course_image">
+                        </a>
+                        <p/>
+                        <p> &lt; 3. 정인면옥 &gt; </p>
+                        <h4> 좋은 품질의 식재료와 변함없는 맛에 대한 고집이 담겨있는 평양냉면 <h4>
+                        <a href="https://junginmyunok.modoo.at/" target="_blank">
+                            <img src="2_3_YH_f3.JPG" alt="정인면옥" class="course_image">
+                        </a>
+                        <p/>
+                    </div>
+                </div>
+<!--4. 매헌시민의 숲-->
+                <div id="Maeheon-forest" class="selected_section">
+                    <h2> 매헌시민의 숲 </h2>
+                    <div class="course_visit">
+                        <h3> 우리나라 최초의 숲, 매헌시민의 숲 </h3>
+                        <img src="2_4_mh0.jpg" alt="매헌0" class="course_image">
+                        <p> &lt; 키 큰 나무들이 울창한 산책로를 거닐어봅시다 &gt; </p>
+                        <a href="https://parks.seoul.go.kr/template/sub/citizen.do" target="_blank">
+                            <img src="2_4_mh1.jpg" alt="매헌1" class="course_image">
+                        </a>
+                        <p/>
+                        <p> &lt; 메타세쿼이어 숲 &gt; </p>
+                        <h4> 도심에서 보기 힘든 울창한 녹색 휴식 공간 </h4>
+                        <a href="https://parks.seoul.go.kr/template/sub/citizen.do" target="_blank">
+                            <img src="2_4_mh2.jpg" alt="매헌2" class="course_image">
+                        </a>
+                        <p/>
+                        <p> &lt; 매헌윤봉길의사기념관 &gt; </p>
+                        <h4> 우리 민족의 독립을 위해 목숨을 바친 윤봉길의사의 삶과 업적을 기리는 공간 </h4>
+                        <a href="http://www.yunbonggil.or.kr/" target="_blank">
+                            <img src="2_4_mh3.jpg" alt="매헌3" class="course_image">
+                        </a>
+                        <p/>
+                            <a href="https://parks.seoul.go.kr/template/sub/citizen.do" target="_blank" class="course_link">
+                                ['매헌 시민의 숲'에 대해 더 알고 싶다면 ☞]
+                            </a>
+                        <p/>
+                    </div>
+                    <p/>
+                    <h2>맛집 추천</h2>
+                    <div class="course_visit">
+                        <p> &lt; 1. 미우야 &gt; </p>
+                        <h4> 양재천에서 가까운 소바·우동 맛집 <h4>
+                        <a href="https://www.instagram.com/miuya_yangjae/" target="_blank">
+                            <img src="2_4_mh_f1.jpg" alt="미우야" class="course_image">
+                        </a>
+                        <p/>
+                        <p> &lt; 2. 도프피자 베이커스 &gt; </p>
+                        <h4> 정통 뉴욕식 피자 <h4>
+                        <a href="http://www.instagram.com/dope_pizza_bakers" target="_blank">
+                            <img src="2_4_mh_f2.jpg" alt="도프피자베이커스" class="course_image">
+                        </a>
+                        <p/>
+                        <p> &lt; 3. 미니말레 커피뢰스터 &gt; </p>
+                        <h4> 질 좋은 커피, 분위기 있는 공간, 친절한 서비스 <h4>
+                        <a href="https://www.instagram.com/minimale_kaffeeroster" target="_blank">
+                            <img src="2_4_mh_f3.jpg" alt="미니말레" class="course_image">
+                        </a>
+                        <p/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <div style="text-align : center;"><a href="#top"><img src="button.png" width="100px" height="100px"></a>
+    </footer>
+</body>
+<footer class="sign">
+    <h3> [AISW 23] YIJUN CHAE </h3>
+</footer>
+</html>
